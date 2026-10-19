@@ -1,0 +1,31 @@
+h2{
+    text-align: center;
+}
+#listaResultado{
+    text-align: center;
+    font-size: 23px;
+}
+
+#totalVotos{
+    text-align: center;
+    font-size: 23px;
+}
+
+
+#btnZerar{
+    display: block;
+    margin: 0 80%;
+    height: 30px;
+    width: 170px;
+    border-radius: 10px;
+    display: block;
+    /*O display: block faz o elemento se comportar como uma “caixa” que ocupa uma linha inteira.cupa toda a largura disponível*/
+    /*justify-content:center; nao funciona no display block dai tem q usr o margin*/
+    font-size: 110%;
+    background-color: #B0B0B0;
+    
+    
+}
+
+
+ 

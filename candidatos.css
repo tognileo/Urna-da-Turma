@@ -1,0 +1,115 @@
+#separamento{
+    text-align: center;
+}
+
+#separamento2 h2{
+    padding-left: 10px;
+}
+
+#nomeCandidato{
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+#numeroCandidato{
+    height: 30px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+#botao_adicionar{
+    height: 30px;
+    width: 170px;
+    border-radius: 10px;
+    display: block;
+    margin: 15px auto;/*primeiro valor cima e baico, segundo valor direita esqurda*/
+    /*O display: block faz o elemento se comportar como uma “caixa” que ocupa uma linha inteira.cupa toda a largura disponível*/
+    /*justify-content:center; nao funciona no display block dai tem q usr o margin*/
+    font-size: 110%;
+    background-color: #B0B0B0;
+    
+}
+
+h2{
+    font-size: 40px;
+}
+#candidatos_cadastrados{
+    text-align: left;
+
+}
+#listaCandidatos{
+    font-size: 23px;
+}
+
+#remover_candidato{
+    border-radius: 10px;
+    height: 23px;
+    width: 100px;
+    font-size: 80%;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
