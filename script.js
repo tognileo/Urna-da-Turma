@@ -1,5 +1,4 @@
 // -- Salvar e resgatar dados do LOCALSTORAGE
-
 function carregarCandidatos() {
     const dados = localStorage.getItem("candidatos");
     return dados ? JSON.parse(dados) : [];
@@ -34,7 +33,7 @@ abas.forEach(function (aba) {
         aba.classList.add("ativa")
         document.getElementById(aba.dataset.tela).classList.add("ativa")
 
-        if (aba.dataset.tela == "candidatos") mostrarCandidatos();
+        if (aba.dataset.tela == "candidatos") login_admin();
         if (aba.dataset.tela == "resultado") mostrarResultado();
     });
 });
@@ -90,6 +89,24 @@ function removerCandidato(numero) {
     salvarCandidatos(candidatos);
     mostrarCandidatos();
 }
+// ---- Votação tela de login
+function login_admin() {
+    
+    abas.classList.remove("ativa");
+    document.getElementById("login_cadastro").classList.add("ativa");
+    document.getElementById("btn_entrar").addEventListener("click", function () {
+        mostrarCandidatos();
+    
+    });  
+}
+
+
+
+
+
+
+
+
 
 // ---- Votação
 
@@ -143,11 +160,6 @@ function atualizarPrevia() {
 
 
 
-    function mostrarFim() {
-        telas.forEach(t => t.classList.remove("ativa"));
-        fim.classList.add("ativa");
-        btn_voltar.classList.add("ativa");
-    }
 
     document.getElementById("btn_voltar").addEventListener("click", function () {
         fim.classList.remove("ativa");
