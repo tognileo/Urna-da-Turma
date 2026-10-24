@@ -1,4 +1,3 @@
-// -- Salvar e resgatar dados do LOCALSTORAGE
 function carregarCandidatos() {
     const dados = localStorage.getItem("candidatos");
     return dados ? JSON.parse(dados) : [];
@@ -18,6 +17,17 @@ function salvarVotos(votos) {
     localStorage.setItem("votos", JSON.stringify(votos));
 }
 
+
+
+// let senha_passe_criptografada = CryptoJS.SHA512("admin").toString();
+
+//  listaUser.push(
+//     {
+//       userCad: usuario_pass,
+//       senhaCad: senha_passe_criptografada // armazena a senha criptografada 
+//     });
+
+
 // ---- Navegação entre páginas
 
 const abas = document.querySelectorAll(".aba")
@@ -25,6 +35,13 @@ const telas = document.querySelectorAll(".tela")
 const fim = document.querySelector(".fim")
 const confirma = document.querySelectorAll(".confirma")
 const btn_voltar = document.querySelector(".btn_voltar")
+const usuario = document.getElementById("usuario");
+const senha = document.getElementById("senha");
+let usuario_pass = "admin";
+let senha_passe_criptografada = CryptoJS.SHA512("admin").toString();
+let bug = 0;
+
+
 abas.forEach(function (aba) {
     aba.addEventListener("click", function () {
         abas.forEach(a => a.classList.remove("ativa"));
@@ -33,10 +50,36 @@ abas.forEach(function (aba) {
         aba.classList.add("ativa")
         document.getElementById(aba.dataset.tela).classList.add("ativa")
 
-        if (aba.dataset.tela == "candidatos") login_admin();
-        if (aba.dataset.tela == "resultado") mostrarResultado();
+        if (aba.dataset.tela == "candidatos" && bug != 1){
+            fim.classList.remove("ativa");
+            btn_voltar.classList.remove("ativa");
+            telas.forEach(t => t.classList.remove("ativa"))
+            document.getElementById("login_cadastro").classList.add("ativa")};
+            
+        if (aba.dataset.tela == "btn_entrar"){ 
+            
+            let senha_usuario_criptografada = CryptoJS.SHA512(senha.value).toString();
+            localStorage.setItem("senhado usuario",senha_usuario_criptografada);
+
+            if (usuario.value == usuario_pass && senha_usuario_criptografada == senha_passe_criptografada){
+                document.getElementById("candidatos").classList.add("ativa");
+                bug = 1;
+                mostrarCandidatos()}
+            else{
+                console.log("erro")}}
+        if (aba.dataset.tela == "resultado"){
+            fim.classList.remove("ativa");
+            btn_voltar.classList.remove("ativa");
+            mostrarResultado();
+        } 
     });
 });
+
+
+
+
+
+
 
 // --- Cadastro de candidatos 
 const formaCandidato = document.getElementById("formCandidato");
@@ -65,7 +108,6 @@ formCandidato.addEventListener("submit", function (evento) {
 
 function mostrarCandidatos() {
     const candidatos = carregarCandidatos();
-    const numero =carregarCandidatos();
     listaCandidatos.innerHTML = "";
 
     if (candidatos.length === 0) {
@@ -89,17 +131,6 @@ function removerCandidato(numero) {
     salvarCandidatos(candidatos);
     mostrarCandidatos();
 }
-// ---- Votação tela de login
-function login_admin() {
-    
-    abas.classList.remove("ativa");
-    document.getElementById("login_cadastro").classList.add("ativa");
-    document.getElementById("btn_entrar").addEventListener("click", function () {
-        mostrarCandidatos();
-    
-    });  
-}
-
 
 
 
@@ -154,6 +185,10 @@ function atualizarPrevia() {
         
         const candidato = carregarCandidatos().find(c => c.numero === numero);
         registrarVoto(candidato ? numero : "nulo");
+        limpaUrna();
+        votacao.classList.remove("ativa");
+        document.getElementById("fim").classList.add("ativa");
+        document.getElementById("btn_voltar").classList.add("ativa");
         mostrarFim()})
 
 
