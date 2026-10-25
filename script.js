@@ -77,10 +77,6 @@ abas.forEach(function (aba) {
 
 
 
-
-
-
-
 // --- Cadastro de candidatos 
 const formaCandidato = document.getElementById("formCandidato");
 const listaCandidatos = document.getElementById("listaCandidatos");
